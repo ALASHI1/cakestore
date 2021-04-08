@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zxx">
+{%load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Cake Template">
+    <meta name="keywords" content="Cake, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% block title %}<title>Cake</title>{% endblock %}
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/flaticon.css'%}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/barfiller.css'%}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css'%}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css'%}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/elegant-icons.css'%}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/nice-select.css'%}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css'%}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/slicknav.min.css'%}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/style.css'%}" type="text/css">
+</head>
+
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Offcanvas Menu Begin -->
+    <div class="offcanvas-menu-overlay"></div>
+    <div class="offcanvas-menu-wrapper">
+        <div class="offcanvas__cart">
+            <div class="offcanvas__cart__links">
+                <a href="#" class="search-switch"><img src="{% static 'img/icon/search.png' %}" alt=""></a>
+                <a href="#"><img src="{% static 'img/icon/heart.png'%}" alt=""></a>
+            </div>
+            <div class="offcanvas__cart__item">
+                <a href="#"><img src="{% static 'img/icon/cart.png'%}" alt=""> <span>0</span></a>
+                <div class="cart__price">Cart: <span>$0.00</span></div>
+            </div>
+        </div>
+        <div class="offcanvas__logo">
+            <a href="{% url 'cake:home' %}"><img src="{% static 'img/sylvia-logo.png'%}" alt=""></a>
+        </div>
+        <div id="mobile-menu-wrap"></div>
+        <div class="offcanvas__option">
+            <ul>
+              
+                <li><a href="{% url 'account_login' %}">Sign in</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- Offcanvas Menu End -->
+
+    <!-- Header Section Begin -->
+    <header class="header">
+        <div class="header__top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="header__top__inner">
+                            <div class="header__top__left">
+                                <ul>{% if request.user.is_authenticated %}
+                                    Hello {{ request.user.first_name }},
+                                    {%else%}
+                                    <li><a href="{% url 'account_login' %}">Sign in</a></li>
+                                    }
+                                {% endif %}
+                                </ul>
+                            </div>
+                            <div class="header__logo">
+                                <a href="{% url 'cake:home' %}"><img style="width:120px; height:52px;" src="{% static 'img/sy.png'%}" alt=""></a>
+                            </div>
+                            <div class="header__top__right">
+                                <div class="header__top__right__links">
+                                    <a href="#" class="search-switch"><img src="{% static 'img/icon/search.png'%}" alt=""></a>
+                                    
+                                </div>
+                                {% with total_items=cart|length %} 
+                                {% if total_items > 0 %}
+                                <div class="header__top__right__cart">
+                                    <a href="{% url 'cart:cart_detail' %}"><img src="{% static 'img/icon/cart.png'%}" alt=""> <span>
+                                    {{ total_items }}</span></a>
+                                    <div class="cart__price">Cart: <span>
+                                    ${{ cart.get_total_price }}</span></div>
+                                </div>
+                                {% else %}
+                                <div class="header__top__right__cart">
+                                    <a href="{% url 'cart:cart_detail' %}"><img src="{% static 'img/icon/cart.png'%}" alt=""> <span>0</span></a>
+                                    <div class="cart__price">Cart: <span>$0.00</span></div>
+                                </div>
+                                       {% endif %}
+                                     {% endwith %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="canvas__open"><i class="fa fa-bars"></i></div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <nav class="header__menu mobile-menu">
+                        <ul>
+                            <li class="active"><a href="{% url 'cake:home' %}">Home</a></li>
+                            <li><a href="{% url 'cake:product_list' %}">Shop</a></li>
+                            <li><a href="{% url 'cake:about' %}">About</a></li>
+                            <li><a href="{% url 'cake:contact' %}">Contact</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Header Section End -->
+{% block content %}
+    <!-- Hero Section Begin -->
+    <section class="hero">
+        <div class="hero__slider owl-carousel">
+            <div class="hero__item set-bg" data-setbg="https://images.unsplash.com/photo-1574085733277-851d9d856a3a?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MjB8fHxlbnwwfHx8&w=1000&q=80">
+                <div class="container">
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-lg-8">
+                            <div class="hero__text">
+                                <h2>Making your life sweeter one bite at a time!</h2>
+                                <a href="{% url 'cake:product_list' %}" class="primary-btn">Our cakes</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero__item set-bg" data-setbg="https://images.unsplash.com/photo-1574085733277-851d9d856a3a?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MjB8fHxlbnwwfHx8&w=1000&q=80">
+                <div class="container">
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-lg-8">
+                            <div class="hero__text">
+                                <h2>Making your life sweeter one bite at a time!</h2>
+                                <a href="{% url 'cake:product_list' %}" class="primary-btn">Our cakes</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Hero Section End -->
+<br>
+<br>
+
+    <!-- Categories Section Begin -->
+    <div class="categories">
+        <div class="container">
+            <div class="row">
+                <div class="categories__slider owl-carousel">
+                    {% for c in categories %}
+                    <div class="categories__item">
+                        <a href="{{ c.get_absolute_url }}">
+                        <div class="categories__item__icon">
+                            <span class="flaticon-006-macarons"></span>
+                            <h5>{{ c.name }} </h5>
+                        </div>
+                        </a>
+                    </div>
+                    {% endfor %}
+                    {% for c in categories %}
+                    <div class="categories__item">
+                        <a href="{{ c.get_absolute_url }}">
+                        <div class="categories__item__icon">
+                            <span class="flaticon-006-macarons"></span>
+                            <h5>{{ c.name }} </h5>
+                        </div>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Categories Section End -->
+
+    <!-- Product Section Begin -->
+    <section class="product spad">
+        
+        <div class="container">
+            <div class="row">
+                {% for product in products %}
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="product__item">
+                        <div class="product__item__pic set-bg" data-setbg="{{ product.image.url }}">
+                            <div class="product__label">
+                                <span>{{ product.category }}</span>
+                            </div>
+                        </div>
+                        <div class="product__item__text">
+                            <h6><a href="{{ product.get_absolute_url }}">{{ product.name }}</a></h6>
+                            <div class="product__item__price">#{{ product.price }}</div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <!-- Product Section End -->
+
+  
+    
+<br>
+<br>
+<br>
+<br>
+
+    
+{% endblock %}
+    <!-- Footer Section Begin -->
+    <footer class="footer set-bg" data-setbg="{% static 'img/footer-bg.jpg'%}">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="footer__widget">
+                        <h6>WORKING HOURS</h6>
+                        <ul>
+                            <li>Monday - Friday: 08:00 am – 08:30 pm</li>
+                            <li>Saturday: 10:00 am – 16:30 pm</li>
+                            
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="footer__about">
+                        <div class="footer__logo">
+                            <a href="#"><img src="{% static 'img/sy.png'%}" alt=""></a>
+                        </div>
+                        <p>Providing you with the best pastries that are very afforable and easily acessable to you and your friends</p>
+                        <div class="footer__social">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-instagram"></i></a>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="footer__newslatter">
+                        <h6>Subscribe</h6>
+                        <p>Get latest updates and offers.</p>
+                        <div class="footer__social">
+                        <a href="#"><i class="fa fa-youtube-play"></i></a>
+                        <a href="#"><i class="fa fa-youtube-play"></i></a>
+                        <a href="#"><i class="fa fa-youtube-play"></i></a>
+                        <a href="#"><i class="fa fa-youtube-play"></i></a>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Footer Section End -->
+
+<!-- Search Begin -->
+<div class="search-model">
+    <div class="h-100 d-flex align-items-center justify-content-center">
+        <div class="search-close-switch">+</div>
+        <form class="search-model-form">
+            <input type="text" id="search-input" placeholder="Search here.....">
+        </form>
+    </div>
+</div>
+<!-- Search End -->
+
+<!-- Js Plugins -->
+<script src="{% static 'js/jquery-3.3.1.min.js'%}"></script>
+<script src="{% static 'js/bootstrap.min.js'%}"></script>
+<script src="{% static 'js/jquery.nice-select.min.js'%}"></script>
+<script src="{% static 'js/jquery.barfiller.js'%}"></script>
+<script src="{% static 'js/jquery.magnific-popup.min.js'%}"></script>
+<script src="{% static 'js/jquery.slicknav.js'%}"></script>
+<script src="{% static 'js/owl.carousel.min.js'%}"></script>
+<script src="{% static 'js/jquery.nicescroll.min.js'%}"></script>
+<script src="{% static 'js/main.js'%}"></script>
+</body>
+
+</html>

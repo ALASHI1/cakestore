@@ -1,0 +1,98 @@
+{% extends "index.html" %}
+   {% load static %}
+{% block title %}
+<title>About</title>
+{% endblock %}
+{% block content %}
+
+    <!-- Breadcrumb Begin -->
+    <div class="breadcrumb-option">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="breadcrumb__text">
+                        <h2>About</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb End -->
+
+    <!-- About Section Begin -->
+    <section class="about spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <img style="width:100%; height:500px;" src="{% static 'img/about1.png' %}">
+                </div>
+            </div>
+            <br>
+<br>
+<br>
+<br>
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <div class="about__text">
+                        <div class="section-title">
+                            <span>About Sylvia pastries</span>
+                            <h2>Cakes and bakes from the one that does it Best!</h2>
+                        </div>
+                        <p>Sylvia pastries offers a variety of pastries with unrivalled taste and sevrved with the epitome of style and even dear i say Swag we do a good job of Providing you with the best pastries that are very afforable and easily acessable to you and your friends</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                     <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/bea51f9b-197f-474c-9077-9b51270c2f1b/dapqdl0-66f6989c-4cf5-4a01-ad04-b26e381639e8.png/v1/fill/w_1024,h_1032,q_80,strp/mystery_chibi_cupcake_adopts__open__by_tigress1051_dapqdl0-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3siaGVpZ2h0IjoiPD0xMDMyIiwicGF0aCI6IlwvZlwvYmVhNTFmOWItMTk3Zi00NzRjLTkwNzctOWI1MTI3MGMyZjFiXC9kYXBxZGwwLTY2ZjY5ODljLTRjZjUtNGEwMS1hZDA0LWIyNmUzODE2MzllOC5wbmciLCJ3aWR0aCI6Ijw9MTAyNCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.5zelxJkrN1Vo6bXdj9bbNyc-tJdk95YcT0HU7BplUy4">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- About Section End -->
+    
+    <!-- Team Section Begin -->
+    <section class="team spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 col-md-7 col-sm-7">
+                    <div class="section-title">
+                        <span>Our team</span>
+                        <h2> The squad </h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="team__item set-bg" data-setbg="{% static 'img/kosi.png'%}">
+                        <div class="team__item__text">
+                            <h6>KOSI</h6>
+                            <span>Baker</span>
+                            <div class="team__item__social">
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-instagram"></i></a>
+                                <a href="#"><i class="fa fa-youtube-play"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="team__item set-bg" data-setbg="{% static 'img/muyiwa.png'%}">
+                        <div class="team__item__text">
+                            <h6>ALASHI</h6>
+                            <span>WEB DEV</span>
+                            <div class="team__item__social">
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-instagram"></i></a>
+                                <a href="#"><i class="fa fa-youtube-play"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Team Section End -->
+
+{% endblock %}

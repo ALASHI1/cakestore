@@ -1,0 +1,74 @@
+{% extends "index.html" %}
+   {% load static %}
+{% block title %}
+<title>{{ product.name }}</title>
+{% endblock %}
+{% block content %}
+    <!-- Shop Details Section Begin -->
+    <section class="product-details spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="product__details__img">
+                        <div class="product__details__big__img">
+                            <img class="big_img" src="{{ product.image.url }}" alt="">
+                        </div>
+                        <div class="product__details__thumb">
+                        	<div class="pt__item active">
+                                <img data-imgbigurl="{{ product.image.url }}"
+                                src="{{ product.image.url }}" alt="">
+                            </div>
+                            {% for i in images %}
+                            <div class="pt__item active">
+                                <img data-imgbigurl="{{i.images.url}}"
+                                src="{{i.images.url}}" alt="">
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="product__details__text">
+                        <div class="product__label">{{ product.category }}</div>
+                        <h4>{{ product.name }}</h4>
+                        <h5>#{{ product.price }}</h5>
+                        <p>{{ product.description|linebreaks }}</p>
+                        <form action="{% url 'cart:cart_add' product.id %}" method="post">
+                        <div class="product__details__option">
+                            <div class="quantity">
+                                <div class="pro-qty">
+                                    {% csrf_token %}
+                               <input name="quantity" id="id_quantity" type="text" value="1">
+                                </div>
+                            </div>
+                            <input class="primary-btn"  type="submit" value="Add to cart">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Shop Details Section End -->
+
+    <!-- Related Products Section Begin -->
+    <!--  -->
+    <!-- Related Products Section End -->
+{% endblock %}
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

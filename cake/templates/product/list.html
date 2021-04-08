@@ -1,0 +1,67 @@
+{% extends "index.html" %}
+   {% load static %}
+{% block title %}
+<title>{% if category %}{{ category.name }}{% else %}Products{% endif %}</title>
+   {% endblock %}
+{% block content %}
+
+    <!-- Breadcrumb Begin -->
+    <div class="breadcrumb-option">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="breadcrumb__text">
+                        <h2>Shop</h2>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb End -->
+
+    <!-- Shop Section Begin -->
+    <section class="shop spad">
+        <div class="container">
+            <div class="shop__option">
+                <div class="row">
+                    <div class="col-lg-7 col-md-7">
+                        <div class="shop__option__search">
+                            <form action="{{get_absolute_url}}">
+                                <select>
+                                  
+                                    <option value="">Categories</option>
+                                    {% for c in categories %}
+                                    <option value="{{get_absolute_url}}"><a href="{{get_absolute_url}}">{{c.name}}</option>
+                                    {% endfor %}</a>
+                                </select>
+                                <input type="text" placeholder="Search">
+                                <button type="submit"><i class="fa fa-search"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                {% for product in products %}
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="product__item">
+                        <div class="product__item__pic set-bg"data-setbg="
+                        {{ product.image.url }}">
+                            <div class="product__label">
+                                <span>{{ product.category }}</span>
+                            </div>
+                        </div>
+                        <div class="product__item__text">
+                            <h6><a href="{{ product.get_absolute_url }}">{{ product.name }}</a></h6>
+                            <div class="product__item__price">#{{ product.price }}</div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            
+        </div>
+    </section>
+    <!-- Shop Section End -->
+{% endblock %}
