@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'corsheaders',
+    'storages',
 ]
 
 SITE_ID = 1
@@ -173,13 +174,35 @@ STATIC_URL = '/static/'
 
 STATIC_ROOT=os.path.join(BASE_DIR, "static/")
 
-MEDIA_URL = '/media/'
+MEDIA_URL = '/'
 MEDIA_ROOT = os.path.join(BASE_DIR, '')
 
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'staticfiles')
 ]
+
+
+
+
+AWS_STORAGE_BUCKET_NAME = 'cakestore'
+AWS_S3_REGION_NAME = 'us-east-2'  # e.g. us-east-2
+AWS_ACCESS_KEY_ID = 'AKIATZ6GEFFUDKIXQEX6'
+AWS_SECRET_ACCESS_KEY = 'ZlzPldicJ8b6h6pp+Vk/GGZG7rnCnJn6o5QF75nC'
+
+# Tell django-storages the domain to use to refer to static files.
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+
+# Tell the staticfiles app to use S3Boto3 storage when writing the collected static files (when
+# you run `collectstatic`).
+
+
+STATICFILES_LOCATION = 'static'
+STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+
+MEDIAFILES_LOCATION = 'media'
+DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+
 
 
 
