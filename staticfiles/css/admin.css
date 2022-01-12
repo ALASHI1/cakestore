@@ -1,0 +1,14 @@
+#header {
+	background:#ff5454;
+	color: #ffc;
+}
+
+div.breadcrumbs {
+	background:#a9ff4e;
+	color:#ffc;
+}
+
+.button, input[type=submit], input[type=button], .submit-row input, a.button {
+	background:#ff5454;
+	color: #ffc;
+}

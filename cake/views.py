@@ -1,13 +1,12 @@
-from django.shortcuts import render, get_object_or_404 
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Category, Product,ProductImage,Contact
-from .forms import ContactCreateForm
+from .forms import ContactCreateForm,Adminpage,Adminmage
 from cart.forms import CartAddProductForm
-
-def home(request,category_slug=None):
+from django.forms import modelformset_factory
+def home(request, category_slug=None):
 	category = None
 	categories = Category.objects.all()
 	products = Product.objects.filter(available=True)
-	some = Product.objects.filter() 
  
 	if category_slug:
 		category = get_object_or_404(Category, slug=category_slug)
@@ -46,6 +45,31 @@ def about(request):
 	return render(request,'about.html',{})
 
 
+def adminpage(request):
+	if request.method == 'POST':
+		form = Adminpage(data=request.POST)
+		if form.is_valid():
+			form.save()
+			return render(request,'adminpage01.html',{})
+	else:
+		form = Adminpage()
+
+	return render(request,'adminpage.html',{'form':form})
+
+def adminpage01(request):
+	return render(request,'adminpage01.html',{})
+
+
+def adminpage2(request):
+	if request.method == 'POST':
+		form = Adminmage(data=request.POST)
+		if form.is_valid():
+			form.save()
+			return render(request,'adminpage01.html',{})
+	else:
+		form = Adminmage()
+
+	return render(request,'adminpage2.html',{'adminmage':form})
 
 
 

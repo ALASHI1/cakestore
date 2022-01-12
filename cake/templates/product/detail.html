@@ -11,19 +11,31 @@
                 <div class="col-lg-6">
                     <div class="product__details__img">
                         <div class="product__details__big__img">
-                            <img class="big_img" src="{{ product.image.url }}" alt="">
+                            <img class="big_img" src="{{ product.get_image }}" alt="">
                         </div>
                         <div class="product__details__thumb">
                         	<div class="pt__item active">
-                                <img data-imgbigurl="{{ product.image.url }}"
-                                src="{{ product.image.url }}" alt="">
+                                <img data-imgbigurl="{{ product.get_image }}"
+                                src="{{ product.get_image }}" alt="">
                             </div>
-                            {% for i in images %}
+                            
                             <div class="pt__item active">
-                                <img data-imgbigurl="{{i.images.url}}"
-                                src="{{i.images.url}}" alt="">
+                                <img data-imgbigurl="{{images.get_photo1}}"
+                                src="{{images.get_photo1}}" alt="">
                             </div>
-                            {% endfor %}
+                            <div class="pt__item active">
+                                <img data-imgbigurl="{{images.get_photo2}}"
+                                src="{{images.get_photo2}}" alt="">
+                            </div>
+                            <div class="pt__item active">
+                                <img data-imgbigurl="{{images.get_photo3}}"
+                                src="{{images.get_photo3}}" alt="">
+                            </div>
+                            <div class="pt__item active">
+                                <img data-imgbigurl="{{images.get_photo4}}"
+                                src="{{images.get_photo4}}" alt="">
+                            </div>
+                            
                         </div>
                     </div>
                 </div>

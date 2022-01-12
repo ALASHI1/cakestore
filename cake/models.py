@@ -39,15 +39,51 @@ class Product(models.Model):
 	def get_absolute_url(self):
 		return reverse('cake:product_detail',args=[self.id, self.slug])
 
+	def get_image(self):
+		if self.image and hasattr(self.image, 'url'):
+			return self.image.url
+		else:
+			return "https://i.dlpng.com/static/png/5592534-pin-by-kim-reed-on-sewing-happy-birthday-cake-png-transparent-happy-birthday-cake-png-840_671_preview.png"
+
+
+
+
+
+
+
+
+
 class ProductImage(models.Model):
     product = models.ForeignKey(Product, default=None, on_delete=models.CASCADE)
     images = models.ImageField(upload_to='products/%Y/%m/%d', blank=True)
+    images1 = models.ImageField(upload_to='products/%Y/%m/%d', blank=True)
+    images2 = models.ImageField(upload_to='products/%Y/%m/%d', blank=True)
+    images3 = models.ImageField(upload_to='products/%Y/%m/%d', blank=True)
 
-    def get_photo_url(self):
+
+    def get_photo1(self):
     	if self.images and hasattr(self.images, 'url'):
     		return self.images.url
     	else:
-    		return "https://alumni.crg.eu/sites/default/files/default_images/default-picture_0_0.png"
+    		return "https://i.dlpng.com/static/png/5592534-pin-by-kim-reed-on-sewing-happy-birthday-cake-png-transparent-happy-birthday-cake-png-840_671_preview.png"
+
+    def get_photo2(self):
+    	if self.images1 and hasattr(self.iimages1, 'url'):
+    		return self.images1.url
+    	else:
+    		return "https://i.dlpng.com/static/png/5592534-pin-by-kim-reed-on-sewing-happy-birthday-cake-png-transparent-happy-birthday-cake-png-840_671_preview.png"
+
+    def get_photo3(self):
+    	if self.images2 and hasattr(self.images2, 'url'):
+    		return self.images2.url
+    	else:
+    		return "https://i.dlpng.com/static/png/5592534-pin-by-kim-reed-on-sewing-happy-birthday-cake-png-transparent-happy-birthday-cake-png-840_671_preview.png"
+
+    def get_photo4(self):
+    	if self.images3 and hasattr(self.images3, 'url'):
+    		return self.images3.url
+    	else:
+    		return "https://i.dlpng.com/static/png/5592534-pin-by-kim-reed-on-sewing-happy-birthday-cake-png-transparent-happy-birthday-cake-png-840_671_preview.png"
 
 
 class Contact(models.Model):
