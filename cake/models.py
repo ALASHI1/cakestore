@@ -85,7 +85,7 @@ class ProductImage(models.Model):
 
 
 class Contact(models.Model):
-	name = models.CharField(max_length=100, db_index=True) 
+	name = models.CharField(max_length=300, db_index=True) 
 	email = models.EmailField()
 	body = models.TextField()
 
